@@ -7,7 +7,7 @@ Manages your subscription service in-mailbox (eg. cancel-requests) via AI (OpenA
 
 # Features
 
-* Process request in [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages 
+* Process automaticly requests ( [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages )
 * Protect your OpenAI-API Key Budget [$US] by extensive local-first pre-processing & filtering 
 * Protect your local Infrastruture (Mandant Database Requests) from DoS (spam/targeted-attacs/noise)
 	* Filter locally for valid correspondence email addresses (eg. RFC conformance and validity)
