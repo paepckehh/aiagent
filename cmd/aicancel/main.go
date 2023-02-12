@@ -42,7 +42,7 @@ func main() {
 	s.WriteString("# OFFLINE PREFLIGHT ANALYSIS" + _linefeed)
 	s.WriteString("## Language                  : " + lang.Langs[m.Lang.Lang] + _linefeed)
 	s.WriteString("## Confidence                : " + ctoa(m.Lang.Confidence))
-	if m.Lang.Confidence < 0.64 {
+	if m.Lang.Confidence < 0.84 {
 		s.WriteString(" [exit]")
 	} else {
 		s.WriteString(" [valid]")
