@@ -1,0 +1,13 @@
+From:    john.doe@gmail.com
+To:      contract@service.com
+Subject: I`m done! 
+
+Hello MyService Corp,
+
+I changed my mind, my life has changed. I dont want any kind of
+subscription based service, not from you or anyone else! 
+
+Please cancel all services and refund. 
+
+Greetings,
+John

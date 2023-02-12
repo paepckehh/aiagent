@@ -1,0 +1,44 @@
+builds:
+  -
+    id: "aicancel"
+    binary: aicancel
+    main: ./cmd/aicancel/main.go
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - freebsd
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm
+      - arm64
+    goarm:
+      - 7
+archives:
+  -
+    id: aicancel-binaries
+    name_template: "aicancel-{{ .Os }}_{{ .Arch }}_{{ .Version }}"
+    files:
+      - LICENSE.md
+      - README.md
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+nfpms:
+  -
+    file_name_template: "aicancel_package_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    vendor: Michael Paepcke
+    homepage: https://paepcke.de/aicancel
+    maintainer: Michael Paepcke <git@paepcke.de>
+    description: aicancel
+    license: BSD 3-Clause
+    formats:
+      - deb
+      - rpm
