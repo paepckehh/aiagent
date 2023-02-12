@@ -8,7 +8,7 @@ Manages your subscription service in-mailbox (eg. cancel-requests) via AI (OpenA
 # Features
 
 * Process request in [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages 
-* Protect your OpenAI-API Key Budget [$US] by extensive local-first pre-processing & filtering
+* Protect your OpenAI-API Key Budget [$US] by extensive local-first pre-processing & filtering 
 * Protect your local Infrastruture (Mandant Database Requests) from DoS (spam/targeted-attacs/noise)
 	* Filter locally for valid correspondence email addresses (eg. RFC conformance and validity)
 	* Filter locally for supported languages (eg. do not process emails in hindi for a german local newspaper subscription)
@@ -36,7 +36,7 @@ go install paepcke.de/aicancel/cmd/aicancel@latest
 * Input eMails: See example messages in root folder!
 
 ```Shell 
-export OPENAI_API_TOKEN="<your_openai_trail_key>"
+export OPENAI_API_TOKEN="<your_openai_api_key>"
 cat example-email1.txt | aicancel
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
