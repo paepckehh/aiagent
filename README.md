@@ -7,7 +7,7 @@ Manages your subscription service in-mailbox (eg. cancel-requests) via AI (OpenA
 
 # Features
 
-* Process request in [84] (https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages 
+* Process request in [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages 
 * Protect your OpenAI-API Key Budget [$US] by extensive local-first pre-processing & filtering
 * Protect your local Infrastruture (Mandant Database Requests) from DoS (spam/targeted-attacs/noise)
 	* Filter locally for valid correspondence email addresses (eg. RFC conformance and validity)
@@ -122,13 +122,13 @@ cat example-email5.txt | aicancel
 # TODO 
 
 Archive further cost savings - via:
-[] pre-process messages locally via NLP/tokenizer to reduce OpenAI token burn rate
-[] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
-[] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level
-[] add interfaces to let discuss and clarify ChatGPT corner cases with the customer 
-[] add individual, defined answer email templates
-[] add native IMAP/SMTP Interfaces for mail eXchange
-[] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
+* [] pre-process messages locally via NLP/tokenizer to reduce OpenAI token burn rate
+* [] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
+* [] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level
+* [] add interfaces to let discuss and clarify ChatGPT corner cases with the customer 
+* [] add individual, defined answer email templates
+* [] add native IMAP/SMTP Interfaces for mail eXchange
+* [] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
 
 # DOCS
 
@@ -136,7 +136,7 @@ Archive further cost savings - via:
 
 # TECHNICAL DETAILS
 
-* Backend is OpenAI/GPT3/davinici based not, ChatGPT(GPT3.5) 
+* To be technically correct: backend is OpenAI/GPT3/text-davinici-03 based not, ChatGPT(GPT3.5) 
 
 # CONTRIBUTION
 
