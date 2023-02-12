@@ -12,6 +12,7 @@ import (
 	lang "github.com/abadojack/whatlanggo"
 	addr "github.com/mcnijman/go-emailaddress"
 	gpt3 "github.com/sashabaranov/go-gpt3"
+	"paepcke.de/dnscache"
 )
 
 const (
@@ -96,7 +97,7 @@ func (m *EMail) SetAddr() error {
 	if len(emails) > 0 {
 		m.AddrRFC, m.AddrMX = true, true
 		m.Addr = *emails[0]
-		if _, err := addr.LookupHost(m.Addr.Domain); err != nil {
+		if _, err := dnscache.LookupMX(m.Addr.Domain); err != nil {
 			m.AddrMX = false
 		}
 	}
