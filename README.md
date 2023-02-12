@@ -36,24 +36,28 @@ go install paepcke.de/aicancel/cmd/aicancel@latest
 * Input eMails: See example messages in root folder!
 
 ```Shell 
+
 export OPENAI_API_TOKEN="<your_openai_api_key>"
+
 cat example-email1.txt | aicancel
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
 # OFFLINE PREFLIGHT ANALYSIS
 ## Language                  : English
-## Confidence                : 100%
+## Confidence                : 100% [valid]
 ## Customer Email            : john.doe@gmail.com
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Time needed for section   : 19.251771ms
+## Time needed for section   : 17.830573ms
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
 ## OpenAI GPT3 says cancel   : [yes]
 ## OpenAI GPT3 msg [debug]   : Yes, this email does appear to be trying to cancel a subscription service.
-## Time needed for section   : 3.423134375s
+## Time needed for section   : 3.532461771s
+
+
 
 cat example-email2.txt | aicancel
 ##############################
@@ -61,17 +65,19 @@ cat example-email2.txt | aicancel
 ##############################
 # OFFLINE PREFLIGHT ANALYSIS
 ## Language                  : German
-## Confidence                : 100%
+## Confidence                : 100% [valid]
 ## Customer Email            : erika.mustermann@t-online.de
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Time needed for section   : 24.521666ms
+## Time needed for section   : 23.310209ms
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
 ## OpenAI GPT3 says cancel   : [no]
-## OpenAI GPT3 msg [debug]   : No, this email does not really try to cancel a subscription service. It is a question from a customer asking what to do about their subscription.
-## Time needed for section   : 4.450808021s
+## OpenAI GPT3 msg [debug]   : No, this email does not try to cancel a subscription service. The customer is asking for help in deciding what to do about their subscription and is not explicitly asking for it to be cancelled.
+## Time needed for section   : 3.943684896s
+
+
 
 cat example-email3.txt | aicancel
 ##############################
@@ -79,17 +85,19 @@ cat example-email3.txt | aicancel
 ##############################
 # OFFLINE PREFLIGHT ANALYSIS
 ## Language                  : German
-## Confidence                : 100%
+## Confidence                : 100% [valid]
 ## Customer Email            : erika.mustermann@t-online.de
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Time needed for section   : 22.706354ms
+## Time needed for section   : 21.81ms
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
 ## OpenAI GPT3 says cancel   : [yes]
-## OpenAI GPT3 msg [debug]   : Yes, this email is trying to cancel a subscription service.
-## Time needed for section   : 3.285378802s
+## OpenAI GPT3 msg [debug]   : Yes, this email does try to cancel a subscription service. The author specifically states that they want to end the subscription service due to a negative report in another publication.
+## Time needed for section   : 4.099510989s
+
+
 
 cat example-email4.txt | aicancel
 ##############################
@@ -97,12 +105,14 @@ cat example-email4.txt | aicancel
 ##############################
 # OFFLINE PREFLIGHT ANALYSIS
 ## Language                  : English
-## Confidence                : 100%
+## Confidence                : 100% [valid]
 ## Customer Email            : john.doe@invalid.email
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [failed] [exit]
-## Time needed for section   : 17.033072ms
+## Time needed for section   : 15.802395ms
+
+
 
 cat example-email5.txt | aicancel
 ##############################
@@ -110,12 +120,12 @@ cat example-email5.txt | aicancel
 ##############################
 # OFFLINE PREFLIGHT ANALYSIS
 ## Language                  : Slovene
-## Confidence                : 3%
+## Confidence                : 3% [exit]
 ## Customer Email            : angry.customer@gmail.com
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [failed] [exit]
-## Time needed for section   : 25.026875ms
+## Time needed for section   : 24.805052ms
 
 
 ```
@@ -142,6 +152,3 @@ Archive further cost savings - via:
 # CONTRIBUTION
 
 Yes, Please! PRs Welcome! 
-
-
-
