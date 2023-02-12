@@ -142,4 +142,3 @@ func getEnv(in string) (string, bool) {
 func bracket(in string) string {
 	return "[" + in + "]"
 }
-
