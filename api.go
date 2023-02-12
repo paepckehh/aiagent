@@ -5,7 +5,6 @@ import (
 	"context"
 	_ "embed"
 	"errors"
-	"os"
 	"strings"
 	"syscall"
 
@@ -144,7 +143,3 @@ func bracket(in string) string {
 	return "[" + in + "]"
 }
 
-// out ...
-func out(msg string) {
-	os.Stdout.Write([]byte(msg))
-}
