@@ -127,7 +127,8 @@ Archive further cost savings - via:
 [] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level
 [] add interfaces to let discuss and clarify ChatGPT corner cases with the customer 
 [] add individual, defined answer email templates
-[] add native IMAP/SMTP interfaces
+[] add native IMAP/SMTP Interfaces for mail eXchange
+[] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
 
 # DOCS
 
