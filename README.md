@@ -121,9 +121,11 @@ cat example-email5.txt | aicancel
 
 # TODO 
 
-Archive further cost savings, via:
+Archive further cost savings - via:
+[] pre-process messages locally via NLP/tokenizer to reduce OpenAI token burn rate
 [] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
-[] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level)
+[] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level
+[] add interfaces to let discuss and clarify ChatGPT corner cases with the customer 
 [] add individual, defined answer email templates
 [] add native IMAP/SMTP interfaces
 
