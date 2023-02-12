@@ -8,8 +8,8 @@ Manages your subscription service in-mailbox (eg. cancel-requests) via AI (OpenA
 # Features
 
 * Process automaticly requests ( [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages )
-* Protect your OpenAI-API Key Budget [$US] by extensive local-first pre-processing & filtering 
-* Protect your local Infrastruture (Mandant Database Requests) from DoS (spam/targeted-attacs/noise)
+* Protect your OpenAI-API Key Budget [$US] -> extensive local-first pre-processing & filtering 
+* Protect your local Infrastruture (DBs) from DoS (spam/targeted-attacs/noise)
 	* Filter locally for valid correspondence email addresses (eg. RFC conformance and validity)
 	* Filter locally for supported languages (eg. do not process emails in hindi for a german local newspaper subscription)
 	
@@ -132,14 +132,19 @@ cat example-email5.txt | aicancel
 
 # TODO 
 
-Archive further cost savings - via:
-* [] pre-process messages locally via NLP/tokenizer to reduce OpenAI token burn rate
-* [] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
-* [] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level
-* [] add interfaces to let discuss and clarify ChatGPT corner cases with the customer 
-* [] add individual, defined answer email templates
-* [] add native IMAP/SMTP Interfaces for mail eXchange
-* [] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
+quick hits & cost saver:
+[X] pre-process messages local-first via analyze sender email address validity first
+[X] pre-process messages local-first via analyze and match message content and language
+[ ] pre-process messages local-first via NLP/tokenizer to reduce OpenAI token burn rate
+[ ] add native IMAP/SMTP Interfaces for stand-alone email eXchange
+[ ] add individual, language depended answer email templates/responses 
+[ ] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level)
+[ ] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
+
+long term goals (needs commercial project sponsoring):
+[ ] allow ChatGPT to process customer change request (eg. address data)
+[ ] allow ChatGPT to response, discuss and clarify corner cases with customers via mail
+[ ] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
 
 # DOCS
 
