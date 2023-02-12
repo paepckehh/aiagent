@@ -41,7 +41,13 @@ func main() {
 	s.WriteString("##############################" + _linefeed)
 	s.WriteString("# OFFLINE PREFLIGHT ANALYSIS" + _linefeed)
 	s.WriteString("## Language                  : " + lang.Langs[m.Lang.Lang] + _linefeed)
-	s.WriteString("## Confidence                : " + ctoa(m.Lang.Confidence) + _linefeed)
+	s.WriteString("## Confidence                : " + ctoa(m.Lang.Confidence))
+	if m.Lang.Confidence < 0.64 { 
+		s.WriteString(" [exit]")
+	} else {
+		s.WriteString(" [valid]")
+	}
+	s.WriteString(_linefeed)
 	s.WriteString("## Customer Email            : " + m.Addr.String() + _linefeed)
 	s.WriteString("## Customer Email RFC5322    : " + validExit(m.AddrRFC) + _linefeed)
 	s.WriteString("## Customer Email Domain MX  : " + validExit(m.AddrMX) + _linefeed)
