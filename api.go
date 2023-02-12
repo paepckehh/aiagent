@@ -57,9 +57,9 @@ func (m *EMail) SetOpenAI() error {
 	c := gpt3.NewClient(token)
 	ctx := context.Background()
 	req := gpt3.CompletionRequest{
-		Model:     gpt3.GPT3TextDavinci003,
-		MaxTokens: 64,
-		Prompt:    "Does the following email really try to cancel a subscription service?\n" + m.Body,
+		Model:       gpt3.GPT3TextDavinci003,
+		MaxTokens:   64,
+		Prompt:      "Does the following email really try to cancel a subscription service?\n" + m.Body,
 		Temperature: 0,
 	}
 	resp, err := c.CreateCompletion(ctx, req)
