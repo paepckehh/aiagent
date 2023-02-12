@@ -7,7 +7,7 @@ Manages your subscription service in-mailbox (eg. cancel-requests) via AI (OpenA
 
 # Features
 
-* Process automaticly requests ( [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages )
+* Process automatically requests ( [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages )
 * Protect your OpenAI-API Key Budget [$US] -> extensive local-first pre-processing & filtering 
 * Protect your local Infrastruture (DBs) from DoS (spam/targeted-attacs/noise)
 	* Filter locally for valid correspondence email addresses (eg. RFC conformance and validity)
@@ -74,7 +74,7 @@ cat example-email2.txt | aicancel
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
 ## OpenAI GPT3 says cancel   : [no]
-## OpenAI GPT3 msg [debug]   : No, this email does not try to cancel a subscription service. The customer is asking for help in deciding what to do about their subscription and is not explicitly asking for it to be cancelled.
+## OpenAI GPT3 msg [debug]   : No, this email does not try to cancel a subscription service. The customer is asking for help in deciding what to do about their subscription and is not explicitly asking for it to be canceled.
 ## Time needed for section   : 3.943684896s
 
 
