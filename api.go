@@ -16,7 +16,7 @@ import (
 
 const (
 	_linefeedR = '\n' // linefeed
-	_msgHeader = 3    // message header line
+	_msgHeader = 2    // message header line
 )
 
 //go:embed mandant.db
