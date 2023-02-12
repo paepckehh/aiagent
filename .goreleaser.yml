@@ -8,8 +8,6 @@ builds:
     goos:
       - linux
       - freebsd
-      - darwin
-      - windows
     goarch:
       - amd64
       - arm
