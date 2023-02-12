@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/abadojack/whatlanggo v1.0.1
 	github.com/mcnijman/go-emailaddress v1.1.0
-	github.com/sashabaranov/go-gpt3 v1.0.0
+	github.com/sashabaranov/go-gpt3 v1.0.1
 	paepcke.de/dnscache v0.1.6
 )
 
