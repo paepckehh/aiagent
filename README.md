@@ -48,12 +48,12 @@ cat example-email1.txt | aicancel
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Time needed for section   : 19.203281ns
+## Time needed for section   : 19.251771ms
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
-## OpenAI GPT3 says cancel   : [valid]
-## OpenAI GPT3 msg [debug]   : Yes, the email is trying to cancel a subscription service.
-## Time needed for section   : 2.645640625s
+## OpenAI GPT3 says cancel   : [yes]
+## OpenAI GPT3 msg [debug]   : Yes, this email does appear to be trying to cancel a subscription service.
+## Time needed for section   : 3.423134375s
 
 cat example-email2.txt | aicancel
 ##############################
@@ -66,12 +66,12 @@ cat example-email2.txt | aicancel
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Time needed for section   : 22.280104ns
+## Time needed for section   : 24.521666ms
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
-## OpenAI GPT3 says cancel   : [failed]
-## OpenAI GPT3 msg [debug]   : No, this does not appear to be an attempt to cancel a subscription service. The email is asking the customer service team for help in cancelling the subscription, but it has not yet been formally requested.
-## Time needed for section   : 6.014045885s
+## OpenAI GPT3 says cancel   : [no]
+## OpenAI GPT3 msg [debug]   : No, this email does not really try to cancel a subscription service. It is a question from a customer asking what to do about their subscription.
+## Time needed for section   : 4.450808021s
 
 cat example-email3.txt | aicancel
 ##############################
@@ -84,12 +84,12 @@ cat example-email3.txt | aicancel
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Time needed for section   : 23.052708ns
+## Time needed for section   : 22.706354ms
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI GPT3 query state   : [valid]
-## OpenAI GPT3 says cancel   : [valid]
-## OpenAI GPT3 msg [debug]   : Yes, this email does appear to be attempting to cancel a subscription service. The sender explicitly requests for the subscription to be ended.
-## Time needed for section   : 3.877936251s
+## OpenAI GPT3 says cancel   : [yes]
+## OpenAI GPT3 msg [debug]   : Yes, this email is trying to cancel a subscription service.
+## Time needed for section   : 3.285378802s
 
 cat example-email4.txt | aicancel
 ##############################
@@ -102,7 +102,7 @@ cat example-email4.txt | aicancel
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [failed] [exit]
-## Time needed for section   : 16.686406ns
+## Time needed for section   : 17.033072ms
 
 cat example-email5.txt | aicancel
 ##############################
@@ -115,7 +115,8 @@ cat example-email5.txt | aicancel
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [failed] [exit]
-## Time needed for section   : 25.530625ns
+## Time needed for section   : 25.026875ms
+
 
 ```
 
@@ -141,5 +142,6 @@ Archive further cost savings - via:
 # CONTRIBUTION
 
 Yes, Please! PRs Welcome! 
+
 
 

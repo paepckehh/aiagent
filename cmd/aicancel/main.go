@@ -52,7 +52,7 @@ func main() {
 		_ = m.SetOpenAI()
 		s.WriteString("# ONLINE ML MODULES RESOLVER " + _linefeed)
 		s.WriteString("## OpenAI GPT3 query state   : " + valid(m.OpenAI.State) + _linefeed)
-		s.WriteString("## OpenAI GPT3 says cancel   : " + valid(m.OpenAI.IsCancel) + _linefeed)
+		s.WriteString("## OpenAI GPT3 says cancel   : " + yesno(m.OpenAI.IsCancel) + _linefeed)
 		s.WriteString("## OpenAI GPT3 msg [debug]   : " + m.OpenAI.Message + _linefeed)
 		s.WriteString("## Time needed for section   : " + time.Since(t0).String() + _linefeed)
 	}
@@ -69,6 +69,14 @@ func out(msg string) {
 func errExit(msg string) {
 	out(_app + _err + _exit + _space + msg + _linefeed)
 	os.Exit(1)
+}
+
+// yesno  ...
+func yesno(state bool) string {
+	if state {
+		return "[yes]"
+	}
+	return "[no]"
 }
 
 // valid  ...
