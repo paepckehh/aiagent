@@ -133,18 +133,18 @@ cat example-email5.txt | aicancel
 # TODO 
 
 quick hits & cost saver:
-[X] pre-process messages local-first via analyze sender email address validity first
-[X] pre-process messages local-first via analyze and match message content and language
-[ ] pre-process messages local-first via NLP/tokenizer to reduce OpenAI token burn rate
-[ ] add native IMAP/SMTP Interfaces for stand-alone email eXchange
-[ ] add individual, language depended answer email templates/responses 
-[ ] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level)
-[ ] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
+- [X] pre-process messages local-first via analyze sender email address validity first
+- [X] pre-process messages local-first via analyze and match message content and language
+- [ ] pre-process messages local-first via NLP/tokenizer to reduce OpenAI token burn rate
+- [ ] add native IMAP/SMTP Interfaces for stand-alone email eXchange
+- [ ] add individual, language depended answer email templates/responses 
+- [ ] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level)
+- [ ] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
 
 long term goals (needs commercial project sponsoring):
-[ ] allow ChatGPT to process customer change request (eg. address data)
-[ ] allow ChatGPT to response, discuss and clarify corner cases with customers via mail
-[ ] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
+- [ ] allow ChatGPT to process customer change request (eg. address data)
+- [ ] allow ChatGPT to response, discuss and clarify corner cases with customers via mail
+- [ ] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
 
 # DOCS
 
