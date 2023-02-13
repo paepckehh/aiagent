@@ -153,6 +153,7 @@ long term goals (needs commercial project sponsoring):
 # TECHNICAL DETAILS
 
 * To be technically correct: backend is OpenAI/GPT3/text-davinici-03 based not, ChatGPT(GPT3.5) 
+* This version still features a detailed GPT3 'debug' (answer) message, allows you to (manually) verify the justification. In high-volume prod envs, you are supposed to switch this off and cut the max token load by a significant number.
 
 # CONTRIBUTION
 
