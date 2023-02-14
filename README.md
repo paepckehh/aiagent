@@ -7,12 +7,13 @@ Manages your subscription service in-mailbox (eg. cancel-requests) via AI (OpenA
 
 # Features
 
-* Process automatically requests ( [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages )
+* Process requests in [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages ( offline & online )
 * Protect your OpenAI-API Key Budget [$US] -> extensive local-first pre-processing & filtering 
 * Protect your local Infrastruture (DBs) from DoS (spam/targeted-attacs/noise)
 	* Filter locally for valid correspondence email addresses (eg. RFC conformance and validity)
 	* Filter locally for supported languages (eg. do not process emails in hindi for a german local newspaper subscription)
-	
+* EU-GDPR compliant, does not leak personal information (eg. email address) to cloud-based-ai-backend
+
 # INSTALL
 
 Its a library, you need to customize it for your individual service!
@@ -135,16 +136,17 @@ cat example-email5.txt | aicancel
 quick hits & cost saver:
 - [X] pre-process messages local-first via analyze sender email address validity first
 - [X] pre-process messages local-first via analyze and match message content and language
-- [ ] pre-process messages local-first via NLP/tokenizer to reduce OpenAI token burn rate
-- [ ] add native IMAP/SMTP Interfaces for stand-alone email eXchange
+- [ ] pre-process and normalize messages locally via spellsheck 
+- [ ] pre-process and normalize messages locally via NLP/tokenizer/stemmer to reduce OpenAI token burn rate
+- [ ] add native IMAP/SMTP Interfaces to allow total indipenedend email eXchange
 - [ ] add individual, language depended answer email templates/responses 
 - [ ] add local/offline-only/train-able AI-Models (forward only below a certain local confidence level)
 - [ ] add new Online-AI APIs as they appear, to save costs and remove service dependecy (eg. google-ai)
 
 long term goals (needs commercial project sponsoring):
-- [ ] allow ChatGPT to process customer change request (eg. address data)
-- [ ] allow ChatGPT to response, discuss and clarify corner cases with customers via mail
-- [ ] add SIP/Voice Interactive Gateway for Interactive Communication with the Customer
+- [ ] allow ChatGPT to process customer data change requests (eg. address, credit card, ...)
+- [ ] allow ChatGPT to respond, discuss and clarify corner cases direct with customers via email exchange
+- [ ] add SIP/Voice Interactive Gateway for doing the same via interactive communication 
 
 # DOCS
 

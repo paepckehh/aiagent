@@ -9,3 +9,4 @@ cat ../../example-email2.txt | ./aicancel
 cat ../../example-email3.txt | ./aicancel
 cat ../../example-email4.txt | ./aicancel
 cat ../../example-email5.txt | ./aicancel
+rm ./aicancel > /dev/null 2>&1
