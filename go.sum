@@ -2,8 +2,8 @@ github.com/abadojack/whatlanggo v1.0.1 h1:19N6YogDnf71CTHm3Mp2qhYfkRdyvbgwWdd2EP
 github.com/abadojack/whatlanggo v1.0.1/go.mod h1:66WiQbSbJBIlOZMsvbKe5m6pzQovxCH9B/K8tQB2uoc=
 github.com/mcnijman/go-emailaddress v1.1.0 h1:7/Uxgn9pXwXmvXsFSgORo6XoRTrttj7AGmmB2yFArAg=
 github.com/mcnijman/go-emailaddress v1.1.0/go.mod h1:m+aauxGmv31sB5zZ1I8ICcMoa9ZHOA9RiurCijfvkhI=
-github.com/sashabaranov/go-gpt3 v1.0.1 h1:KHwY4uroFlX1qI1Hui7d31ZI6uzbNGL9zAkh1FkfhuM=
-github.com/sashabaranov/go-gpt3 v1.0.1/go.mod h1:BIZdbwdzxZbCrcKGMGH6u2eyGe1xFuX9Anmh3tCP8lQ=
+github.com/sashabaranov/go-gpt3 v1.1.0 h1:94w3N8Sx5VBSLAXFm4+dWrxWR4h1ID1wUftChJ0Ji5A=
+github.com/sashabaranov/go-gpt3 v1.1.0/go.mod h1:BIZdbwdzxZbCrcKGMGH6u2eyGe1xFuX9Anmh3tCP8lQ=
 golang.org/x/crypto v0.6.0 h1:qfktjS5LUO+fFKeJXZ+ikTRijMmljikvG68fpMMruSc=
 golang.org/x/crypto v0.6.0/go.mod h1:OFC/31mSvZgRz0V1QTNCzfAI1aIRzbiufJtkMIlEp58=
 golang.org/x/net v0.0.0-20180911220305-26e67e76b6c3/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
