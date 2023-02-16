@@ -1,6 +1,6 @@
 module paepcke.de/aicancel
 
-go 1.21
+go 1.20
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
