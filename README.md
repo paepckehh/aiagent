@@ -137,7 +137,7 @@ cat example-email5.txt | aicancel
 Quick Hits & Cost Saver:
 - [X] Pre-process messages locally first by analyzing sender email address validity
 - [X] Pre-process messages locally first by analyzing and matching message content and language
-- [ ] Pre-process and normalize messages locally via spellcheck
+- [X] Pre-process and normalize messages locally via spellcheck
 - [ ] Pre-process and normalize messages locally via NLP/tokenizer/stemmer to reduce OpenAI token burn rate
 - [ ] Add native IMAP/SMTP interfaces to allow total independent email exchange
 - [ ] Add individual, language-dependent answer email templates/responses

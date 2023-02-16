@@ -1,9 +1,10 @@
 module paepcke.de/aicancel
 
-go 1.20
+go 1.21
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
+	github.com/golangci/misspell v0.4.0
 	github.com/mcnijman/go-emailaddress v1.1.0
 	github.com/sashabaranov/go-gpt3 v1.1.0
 	paepcke.de/dnscache v0.1.8

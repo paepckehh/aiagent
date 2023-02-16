@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	lang "github.com/abadojack/whatlanggo"
+	spell "github.com/golangci/misspell"
 	addr "github.com/mcnijman/go-emailaddress"
 	gpt3 "github.com/sashabaranov/go-gpt3"
 	"paepcke.de/dnscache"
@@ -31,15 +32,16 @@ type OpenAI struct {
 
 // EMail holds the Raw message and all parsable attributes
 type EMail struct {
-	Raw       string            // unprocessed raw input text
-	Body      string            // message body
-	Lang      lang.Info         // message body language and confidence level
-	Addr      addr.EmailAddress // verified customer email
-	AddrRFC   bool              // Addr is RFC5322 conform and has ICANN TLD
-	AddrMX    bool              // Addr Domain has valid MX record
-	AddrDB    bool              // Addr match found in mandant DB
-	OpenAI    OpenAI            // OpenAI response
-	Supported []string          // Supported
+	Raw        string            // unprocessed raw input text
+	Body       string            // message body
+	Lang       lang.Info         // message body language and confidence level
+	Addr       addr.EmailAddress // verified customer email
+	AddrRFC    bool              // Addr is RFC5322 conform and has ICANN TLD
+	AddrMX     bool              // Addr Domain has valid MX record
+	AddrDB     bool              // Addr match found in mandant DB
+	OpenAI     OpenAI            // OpenAI response
+	Supported  []string          // Supported
+	SpellFixed []spell.Diff      // SpellFixed words
 }
 
 // SetOpenAI parses the message body via OpenAI/GPT3
@@ -75,6 +77,44 @@ func (m *EMail) SetOpenAI() error {
 		}
 	}
 	return nil
+}
+
+// Tokenize parses (offline) the message body and replaces words via stemmer token
+func (m *EMail) Tokenize() error {
+	if m.Body == "" {
+		if err := m.SetBody(); err != nil {
+			return errors.New("Unable to set Message Body: " + err.Error())
+		}
+	}
+	return nil
+}
+
+// SpellFix parses (offline) the message body and replaces words via stemmer token
+func (m *EMail) SpellFix() error {
+	if m.Body == "" {
+		if err := m.SetBody(); err != nil {
+			return errors.New("Unable to set Message Body: " + err.Error())
+		}
+	}
+	switch lang.Langs[m.Lang.Lang] {
+	case "English":
+		r := spell.New()
+		m.Body, m.SpellFixed = r.Replace(m.Body)
+	}
+	return nil
+}
+
+// SpellSummary provides a list of spell-fixed words as string from from SpellCheck diff
+func (m *EMail) SpellSummary() string {
+	l := len(m.SpellFixed)
+	if l < 1 {
+		return "[none]"
+	}
+	result := make([]string, l)
+	for v, diff := range m.SpellFixed {
+		result[v] = diff.Corrected
+	}
+	return strings.Join(result, ",")
 }
 
 // SetAddr parses and validates sender address

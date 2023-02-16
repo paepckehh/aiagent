@@ -33,6 +33,8 @@ func main() {
 		Raw: getPipe(),
 	}
 	_ = m.SetLang()
+	_ = m.SpellFix()
+	_ = m.Tokenize()
 	_ = m.SetAddr()
 	var s strings.Builder
 	s.WriteString(_linefeed)
@@ -48,6 +50,7 @@ func main() {
 		s.WriteString(" [valid]")
 	}
 	s.WriteString(_linefeed)
+	s.WriteString("## SpellFixes                : " + m.SpellSummary() + _linefeed)
 	s.WriteString("## Customer Email            : " + m.Addr.String() + _linefeed)
 	s.WriteString("## Customer Email RFC5322    : " + validExit(m.AddrRFC) + _linefeed)
 	s.WriteString("## Customer Email Domain MX  : " + validExit(m.AddrMX) + _linefeed)
