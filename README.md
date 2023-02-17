@@ -37,7 +37,7 @@ go install paepcke.de/aiagent/cmd/aiagent@latest
 
 * Input eMails: See example messages in root folder!
 
-```Shell 
+``` 
 
 export OPENAI_API_TOKEN="<your_openai_api_key>"
 
