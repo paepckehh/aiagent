@@ -25,10 +25,10 @@ const (
 
 // Payload holds the metrics for a payload
 type Payload struct {
-	Chars      int     // number of characters
-	Words      int     // number of words
-	Token      int     // number of tokens
-	Cost       float64 // cost in $US for one token
+	Chars int     // number of characters
+	Words int     // number of words
+	Token int     // number of tokens
+	Cost  float64 // cost in $US for one token
 }
 
 // OpenAI holds the OpenAI.org interface
