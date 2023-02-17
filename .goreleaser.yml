@@ -1,0 +1,42 @@
+builds:
+  -
+    id: "aiagent"
+    binary: aiagent
+    main: ./cmd/aiagent/main.go
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - freebsd
+    goarch:
+      - amd64
+      - arm
+      - arm64
+    goarm:
+      - 7
+archives:
+  -
+    id: aiagent-binaries
+    name_template: "aiagent-{{ .Os }}_{{ .Arch }}_{{ .Version }}"
+    files:
+      - LICENSE.md
+      - README.md
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+nfpms:
+  -
+    file_name_template: "aiagent_package_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    vendor: Michael Paepcke
+    homepage: https://paepcke.de/aiagent
+    maintainer: Michael Paepcke <git@paepcke.de>
+    description: aiagent
+    license: BSD 3-Clause
+    formats:
+      - deb
+      - rpm
