@@ -53,6 +53,8 @@ type Local struct {
 	AddrMX               bool              // Addr Domain has valid MX record
 	AddrDB               bool              // Addr match found in mandant DB
 	SpellFixed           []spell.Diff      // SpellFixed words
+	RemovedEMails        []string          // Anonymized eMail Adresses
+	RemovedPhones        []string          // Anonymized Phone Numbers
 	Processed            bool
 	ProcessedTime        time.Duration
 }
@@ -132,6 +134,7 @@ func (m *EMail) ProcessLocal() error {
 	_ = m.SetLang()
 	_ = m.SpellFix()
 	_ = m.SetAddr()
+	_ = m.Anonymize()
 	_ = m.Tokenize()
 	_ = m.CountToken()
 	return nil
@@ -142,11 +145,6 @@ func (l *Local) TimeNeeded(t0 time.Time) { l.ProcessedTime = time.Since(t0) }
 
 // TimeNeeded set time needed to process OpenAI section
 func (o *OpenAI) TimeNeeded(t0 time.Time) { o.ProcessedTime = time.Since(t0) }
-
-// Tokenize parses (offline) the message body and replaces words via stemmer token
-func (m *EMail) Tokenize() error {
-	return nil
-}
 
 // CountToken counts the real GT3 compatible Token for Raw and Message, calculate the costs in US$
 func (m *EMail) CountToken() error {
@@ -193,6 +191,37 @@ func (m *EMail) SpellSummary() string {
 		result[v] = diff.Corrected
 	}
 	return strings.Join(result, ",")
+}
+
+// Tokenize parses (offline) the message body and replaces words via stemmer token
+func (m *EMail) Tokenize() error {
+	return nil
+}
+
+// Anonymize parses (offline) the message body and replaces private sensitive information
+func (m *EMail) Anonymize() error {
+	_ = m.RemoveEMails()
+	_ = m.RemovePhones()
+	return nil
+}
+
+// RemoveEMails removes privacy relevant email addresses from message body
+func (m *EMail) RemoveEMails() error {
+	emails := addr.FindWithIcannSuffix([]byte(m.Message), false)
+	if len(emails) > 0 {
+		for _, v := range emails {
+			mailAddr := v.String()
+			m.Local.RemovedEMails = append(m.Local.RemovedEMails, mailAddr)
+			m.Message = strings.Replace(m.Message, mailAddr, "", 0)
+		}
+	}
+	return nil
+}
+
+// RemovePhones removes privacy relevant email addresses from message body
+func (m *EMail) RemovePhones() error {
+	// TODO
+	return nil
 }
 
 // SetAddr parses and validates sender address
