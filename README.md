@@ -37,7 +37,7 @@ go install paepcke.de/aiagent/cmd/aiagent@latest
 
 * Input eMails: See example messages in root folder!
 
-```Shell 
+```
 
 export OPENAI_API_TOKEN="<your_openai_api_key>"
 
@@ -70,37 +70,40 @@ John
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
+## Anonymized EMailAddresses : [none]
+## Anonymized PhoneNumbers   : [none]
 ## Raw / Filtered Characters : 283 / 225
 ## Raw / Filtered Words      : 41 / 37
 ## Raw / Filtered GPT3 Token : 84 / 59
 ## Raw / Filtered GPT3 Price : 0.00168 US$  / 0.00118 US$ 
-## Time needed for section   : 3.901066719s
+## Time needed for section   : 4.032207865s
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI query state        : [valid]
 ## OpenAI says cancel        : [yes]
 ## OpenAI analysis [debug]   : 
 
-Yes, this email appears to be attempting to cancel a subscription service.
+Yes, this email is trying to cancel a subscription service.
 
 ## OpenAI Auto Response email: 
 
 Dear John,
 
-We are sorry to hear that you no longer wish to use our subscription service. 
-We understand that life changes and will accept your request to cancel. 
+We are sorry to hear that you have decided to cancel your subscription
+with us. We understand that life can be unpredictable and we are sad to
+see you go. 
 
-We are sad to see you go, and would like to ask if there is anything we can 
-do to keep you as a subscriber? If there is, please let us know, and we will 
-do our best to accommodate your request. 
+We have cancelled your subscription and refunded your payment. 
 
-If you have any further questions or concerns, please do not hesitate to contact us.
+If there is anything we can do to keep you as a customer, please let us know. 
+We would be more than happy to discuss any concerns you may have. 
 
-Thank you for being part of MyService Corp.
+Thank you for being a customer of MyService Corp.
 
 Sincerely,
 Michael
+Callcenter Agent
 
-## Time needed for section   : 13.471735885s
+## Time needed for section   : 8.692266666s
 
 
 
@@ -120,10 +123,12 @@ Und da meinte mein Enkel nach der 2. Tasse Kaffee ich sollte endlich mein Gala
 Abo abbestellen, da ich sowieso die kleinen Buchstaben nicht mehr lesen kann.
 
 Ich will diese Zeitschrift sowieso nicht mehr seit diesem negativen Bericht in
-der Apotheken-Rundschau. Aber manchmal haben die einfach gute Berichte. Was soll
-ich jetzt tun?
+der Apotheken-Rundschau. Aber manchmal haben die einfach gute Berichte. 
 
-Erika
+Was soll ich jetzt tun?
+
+Erika, 
+erreichbar unter (040) 555 555 123 oder erna@badmail.de und erna@myprivate.de
 
 
 # OFFLINE PREFLIGHT ANALYSIS   
@@ -134,24 +139,26 @@ Erika
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
-## Raw / Filtered Characters : 534 / 467
-## Raw / Filtered Words      : 77 / 73
-## Raw / Filtered GPT3 Token : 202 / 172
-## Raw / Filtered GPT3 Price : 0.00404 US$  / 0.00344 US$ 
-## Time needed for section   : 3.697031042s
+## Anonymized EMailAddresses : erna@badmail.de,erna@myprivate.de
+## Anonymized PhoneNumbers   : [none]
+## Raw / Filtered Characters : 616 / 549
+## Raw / Filtered Words      : 87 / 83
+## Raw / Filtered GPT3 Token : 238 / 208
+## Raw / Filtered GPT3 Price : 0.00476 US$  / 0.00416 US$ 
+## Time needed for section   : 3.778667552s
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI query state        : [valid]
 ## OpenAI says cancel        : [no]
 ## OpenAI analysis [debug]   : 
 
-No, this email does not try to cancel a subscription service. The customer is asking 
-what they should do, but they have not made a decision either way.
+No, this email does not try to cancel a subscription service. The email 
+is asking for help on what to do about the subscription. They are not 
+asking to actually cancel the subscription in the email.
 
-## Time needed for section   : 5.218959115s
+## Time needed for section   : 4.356800989s
 
 
 
-> cat example-email3.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -180,41 +187,39 @@ Erika
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [valid]
+## Anonymized EMailAddresses : [none]
+## Anonymized PhoneNumbers   : [none]
 ## Raw / Filtered Characters : 521 / 454
 ## Raw / Filtered Words      : 74 / 70
 ## Raw / Filtered GPT3 Token : 201 / 171
 ## Raw / Filtered GPT3 Price : 0.00402 US$  / 0.00342 US$ 
-## Time needed for section   : 3.712945625s
+## Time needed for section   : 3.785350208s
 # ONLINE ML MODULES RESOLVER 
 ## OpenAI query state        : [valid]
 ## OpenAI says cancel        : [yes]
 ## OpenAI analysis [debug]   : 
 
-Yes, this email tries to cancel a subscription service. The author mentions 
-they want to cancel their Gala Abo and makes a request to have it done immediately.
+Yes, this email is trying to cancel a subscription service for Gala magazine.
 
 ## OpenAI Auto Response email: 
 
-Liebe Frau Erika,
+Sehr geehrte Frau Erika,
 
-vielen Dank für Ihre Email. Wir bedauern sehr, dass Sie Ihr Gala Abo kündigen möchten. 
-Wir haben Ihre Kündigung erhalten und werden diese umgehend bearbeiten. 
+vielen Dank für Ihre E-Mail. Wir bedauern es sehr, dass Sie Ihr Gala-Abo 
+kündigen möchten. Wir haben Ihre Kündigung erhalten und werden diese umgehend 
+bearbeiten. Wenn es etwas gibt, was wir tun können, um Sie als Kunden zu 
+behalten, lassen Sie es uns bitte wissen.
 
-Wir verstehen, dass Sie nicht mehr zufrieden sind und würden gerne wissen, ob es etwas 
-gibt, das wir für Sie tun können, um Ihnen zu helfen, Ihr Abo zu behalten. 
+Nochmals vielen Dank für Ihre Treue und wir hoffen, dass Sie uns in Zukunft 
+weiterhin die Ehre erweisen.
 
-Bitte lassen Sie es uns wissen, wenn Sie Fragen oder Anregungen zu Ihrem Abonnement haben. 
-Wir werden unser Bestes tun, um Ihnen zu helfen.
-
-Mit freundlichen Grüßen, 
-
+Mit freundlichen Grüßen,
 Michael
 
-## Time needed for section   : 21.037154219s
+## Time needed for section   : 11.587421354s
 
 
 
-> cat example-email4.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -239,15 +244,45 @@ John
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [failed] [exit]
+## Anonymized EMailAddresses : [none]
+## Anonymized PhoneNumbers   : [none]
 ## Raw / Filtered Characters : 167 / 101
 ## Raw / Filtered Words      : 18 / 14
 ## Raw / Filtered GPT3 Token : 54 / 28
 ## Raw / Filtered GPT3 Price : 0.00108 US$  / 0.00056 US$ 
-## Time needed for section   : 3.924910468s
+## Time needed for section   : 4.044834375s
+# ONLINE ML MODULES RESOLVER 
+## OpenAI query state        : [valid]
+## OpenAI says cancel        : [yes]
+## OpenAI analysis [debug]   : 
+
+Yes, this email appears to try to cancel a subscription service. The subject 
+line indicates the sender is finished with the service and the body of the 
+email explicitly requests all services be cancelled and a refund be issued.
+
+## OpenAI Auto Response email: 
+
+Dear John,
+
+Thank you for your email. We are sorry to hear that you would like to cancel 
+your subscription with MyService Corp. We understand that you may have your 
+reasons for canceling and we respect your decision.
+
+We would like to thank you for being a loyal customer and we are sad to see 
+you go. Is there anything we can do to keep you as a customer? We would love 
+to hear your feedback and see if there is anything we can do to improve our 
+services.
+
+If you have any questions or concerns, please do not hesitate to contact us.
+
+Sincerely,
+Michael
+Callcenter Agent
+
+## Time needed for section   : 10.589632969s
 
 
 
-> cat example-email5.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -272,21 +307,23 @@ xeqc0SLfLT1RXCLWv9Se5DWrswvo4Y9bkS24xQYOlpgz1We2KDyH/tiyDwtimoePmaI4A7x2mtazMo
 ## Customer Email RFC5322    : [valid]
 ## Customer Email Domain MX  : [valid]
 ## Customer DB entry         : [failed] [exit]
+## Anonymized EMailAddresses : [none]
+## Anonymized PhoneNumbers   : [none]
 ## Raw / Filtered Characters : 511 / 447
 ## Raw / Filtered Words      : 11 / 7
 ## Raw / Filtered GPT3 Token : 353 / 328
 ## Raw / Filtered GPT3 Price : 0.00706 US$  / 0.00656 US$ 
-## Time needed for section   : 3.693537708s
+## No OpenAI query performed, inbound data quality failed.
+## Time needed for section   : 3.819026198s
 
 
 
-> cat example-email6.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
 # INBOUND MESSAGE [debug]    : 
 
-From:    angry.customer@gmail.com
+From:    angry.customer@totalfakeemail
 To:      contract@service.com
 Subject: I'm very angry!
 
@@ -304,15 +341,55 @@ Angry Customer
 ## Language                  : English
 ## Confidence                : 100% [valid]
 ## SpellFixes                : explicit,subscriptions,facebook
-## Customer Email            : angry.customer@gmail.com
-## Customer Email RFC5322    : [valid]
-## Customer Email Domain MX  : [valid]
-## Customer DB entry         : [failed] [exit]
-## Raw / Filtered Characters : 335 / 272
+## Customer Email            : 
+## Customer Email RFC5322    : [failed] [exit]
+## Customer Email Domain MX  : [failed] [exit]
+## Customer DB entry         : [valid]
+## Anonymized EMailAddresses : [none]
+## Anonymized PhoneNumbers   : [none]
+## Raw / Filtered Characters : 340 / 272
 ## Raw / Filtered Words      : 55 / 51
-## Raw / Filtered GPT3 Token : 103 / 74
-## Raw / Filtered GPT3 Price : 0.00206 US$  / 0.00148 US$ 
-## Time needed for section   : 3.86417427s
+## Raw / Filtered GPT3 Token : 105 / 74
+## Raw / Filtered GPT3 Price : 0.00210 US$  / 0.00148 US$ 
+## No OpenAI query performed, inbound data quality failed.
+## Time needed for section   : 4.027401771s
+
+
+
+##############################
+# AI MESSAGE ANALYSIS REPORT #
+##############################
+# INBOUND MESSAGE [debug]    : 
+
+From:    marie@notexistingmail
+To:      contract@service.com
+Subject: Hala!
+
+Hola Servicio al Cliente de MyCorp,
+Lamento informarles que necesito dar por terminado mi suscripción hoy. 
+Estoy agradecida por el excelente servicio que me han brindado durante 
+los años. Por favor, cancelen el servicio lo antes posible.
+
+Atentamente,
+Marie
+
+
+# OFFLINE PREFLIGHT ANALYSIS   
+## Language                  : Spanish
+## Confidence                : 100% [valid]
+## SpellFixes                : [none]
+## Customer Email            : 
+## Customer Email RFC5322    : [failed] [exit]
+## Customer Email Domain MX  : [failed] [exit]
+## Customer DB entry         : [valid]
+## Anonymized EMailAddresses : [none]
+## Anonymized PhoneNumbers   : [none]
+## Raw / Filtered Characters : 336 / 275
+## Raw / Filtered Words      : 45 / 41
+## Raw / Filtered GPT3 Token : 113 / 90
+## Raw / Filtered GPT3 Price : 0.00226 US$  / 0.00180 US$ 
+## No OpenAI query performed, inbound data quality failed.
+## Time needed for section   : 3.79000875s
 
 ```
 
@@ -322,8 +399,8 @@ Pre-process messages offline
 - [X] analyzing sender email address validity
 - [X] analyzing and match message content and language
 - [X] fix spelling errors
-- [X] detect and isolatlate locally, to save token payload, protect privacy
-	- [ ] detect additional customer provided email addresses in message body and remove 
+- [X] detect and isolatlate locally, to save token payload, protect privacy, EU-GDPR compliance
+	- [X] detect additional customer provided email addresses in message body and remove 
 	- [ ] detect any customer provided urls in message body and remove 
 	- [ ] detect any format of custom phone number format and remove 
 - [ ] Preprocess via NLP/tokenizer/stemmer to reduce OpenAI token burn rate
@@ -346,8 +423,4 @@ Long-term goals (needs commercial project sponsoring):
 # CONTRIBUTION
 
 Yes, please! PRs welcome!
-
-
-
-
 

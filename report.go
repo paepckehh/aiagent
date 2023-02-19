@@ -28,8 +28,8 @@ func (m *EMail) buildReport() string {
 	s.WriteString("## Raw / Filtered Words      : " + itoa(m.OpenAI.Raw.Words) + _sep2 + itoa(m.OpenAI.Msg.Words) + _linefeed)
 	s.WriteString("## Raw / Filtered GPT3 Token : " + itoa(m.OpenAI.Raw.Token) + _sep2 + itoa(m.OpenAI.Msg.Token) + _linefeed)
 	s.WriteString("## Raw / Filtered GPT3 Price : " + price(m.OpenAI.Raw.Cost) + _sep2 + price(m.OpenAI.Msg.Cost) + _linefeed)
-	s.WriteString("## Time needed for section   : " + m.Local.ProcessedTime.String() + _linefeed)
 	if m.OpenAI.Processed {
+		s.WriteString("## Time needed for section   : " + m.Local.ProcessedTime.String() + _linefeed)
 		s.WriteString("# ONLINE ML MODULES RESOLVER " + _linefeed)
 		s.WriteString("## OpenAI query state        : " + valid(m.OpenAI.State) + _linefeed)
 		s.WriteString("## OpenAI says cancel        : " + yesno(m.OpenAI.IsCancel) + _linefeed)
@@ -38,6 +38,9 @@ func (m *EMail) buildReport() string {
 			s.WriteString("## OpenAI Auto Response email: " + _dlinefeed + m.OpenAI.Response + _dlinefeed)
 		}
 		s.WriteString("## Time needed for section   : " + m.OpenAI.ProcessedTime.String() + _linefeed)
+	} else {
+		s.WriteString("## No OpenAI query performed, inbound data quality failed." + _linefeed)
+		s.WriteString("## Time needed for section   : " + m.Local.ProcessedTime.String() + _linefeed)
 	}
 	s.WriteString(_linefeed + _linefeed)
 	return s.String()

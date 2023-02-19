@@ -11,4 +11,5 @@ cat ../../example-email3.txt | ./aiagent
 cat ../../example-email4.txt | ./aiagent
 cat ../../example-email5.txt | ./aiagent
 cat ../../example-email6.txt | ./aiagent
+cat ../../example-email7.txt | ./aiagent
 rm ./aiagent > /dev/null 2>&1

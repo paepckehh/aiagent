@@ -105,9 +105,9 @@ func (m *EMail) ProcessOpenAI() error {
 			ctx := context.Background()
 			req := gpt3.CompletionRequest{
 				Model:       GPT3AIModel,
-				MaxTokens:   300,
+				MaxTokens:   250,
 				Prompt:      GPT3AIPromtResponse + lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed + m.Message,
-				Temperature: 0.6,
+				Temperature: 0.2,
 			}
 			resp, err := c.CreateCompletion(ctx, req)
 			if err != nil {
