@@ -18,7 +18,7 @@ var files embed.FS
 
 var pat = regexp2.MustCompile(`/'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+/`, 0)
 
-func loadFiles() (bpeData []byte, encoder []byte, err error) {
+func loadFiles() (bpeData, encoder []byte, err error) {
 	bpeData, err = files.ReadFile("vocab.bpe")
 	if err != nil {
 		return
@@ -324,7 +324,7 @@ func NewEncoder() (*Encoder, error) {
 	return NewEncoderWithVocab(bpeData, rawEncoder)
 }
 
-func NewEncoderWithVocab(bpeData []byte, jsonEncoder []byte) (*Encoder, error) {
+func NewEncoderWithVocab(bpeData, jsonEncoder []byte) (*Encoder, error) {
 	encoder := map[string]int{}
 
 	err := json.Unmarshal(jsonEncoder, &encoder)
@@ -390,7 +390,7 @@ func (e *Encoder) bpe(token string) string {
 			return lo.T3(rank, item.A, item.B)
 		})
 
-		bigram := lo.MinBy(minPairs, func(a lo.Tuple3[int, string, string], b lo.Tuple3[int, string, string]) bool {
+		bigram := lo.MinBy(minPairs, func(a, b lo.Tuple3[int, string, string]) bool {
 			return a.A < b.A
 		})
 
@@ -478,7 +478,7 @@ func (e *Encoder) Encode(text string) ([]int, error) {
 }
 
 func (e *Encoder) Decode(tokens []int) string {
-	parts := lo.Map(tokens, func(token int, _ int) string {
+	parts := lo.Map(tokens, func(token, _ int) string {
 		return e.decoder[token]
 	})
 

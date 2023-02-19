@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 	"strings"
+	"time"
 
 	lang "github.com/abadojack/whatlanggo"
 	spell "github.com/golangci/misspell"
@@ -23,7 +24,7 @@ const (
 	GPT3AIPromtResponse string  = "I'm Callcenter Agent Michael. The following customer email tries to canel a subscription service and maybe contains some reasons why. Please answer this email. Tell this customer that you accept the canel request, but you are sad to see him leave. Ask the customer if there is anything you can do, to keep this subscription. If the customer provides reasons for the cancel request, try to argue politly. Write this answer email in language "
 )
 
-// Payload holds the metrics for a payload
+// Payload holds the metrics for AI payload
 type Payload struct {
 	Chars int     // number of characters
 	Words int     // number of words
@@ -33,34 +34,46 @@ type Payload struct {
 
 // OpenAI holds the OpenAI.org interface
 type OpenAI struct {
-	State    bool
-	IsCancel bool
-	Answer   string
-	Response string
-	Raw      Payload
-	Msg      Payload
+	State         bool
+	IsCancel      bool
+	Answer        string
+	Response      string
+	Raw           Payload
+	Msg           Payload
+	Processed     bool
+	ProcessedTime time.Duration
+}
+
+// Local hols the Local Processed Date
+type Local struct {
+	Lang                 lang.Info         // message body language and confidence level
+	TargetLangConfidence float64           // language target confidence needed
+	Addr                 addr.EmailAddress // verified customer email
+	AddrRFC              bool              // Addr is RFC5322 conform and has ICANN TLD
+	AddrMX               bool              // Addr Domain has valid MX record
+	AddrDB               bool              // Addr match found in mandant DB
+	SpellFixed           []spell.Diff      // SpellFixed words
+	Processed            bool
+	ProcessedTime        time.Duration
 }
 
 // EMail holds the Raw message and all parsable attributes
 type EMail struct {
-	Raw        string            // unprocessed raw input text
-	Message    string            // message
-	Lang       lang.Info         // message body language and confidence level
-	Addr       addr.EmailAddress // verified customer email
-	AddrRFC    bool              // Addr is RFC5322 conform and has ICANN TLD
-	AddrMX     bool              // Addr Domain has valid MX record
-	AddrDB     bool              // Addr match found in mandant DB
-	OpenAI     OpenAI            // OpenAI response
-	Supported  []string          // Supported
-	SpellFixed []spell.Diff      // SpellFixed words
+	Raw     string // unprocessed raw input text
+	Message string // message
+	Local   Local  // Local processed data
+	OpenAI  OpenAI // OpenAI processed data
 }
 
-// SetOpenAI parses the message body via OpenAI/GPT3
-func (m *EMail) SetOpenAI() error {
+// ProcessOpenAI parses the message body via OpenAI/GPT3
+func (m *EMail) ProcessOpenAI() error {
+	t0 := time.Now()
+	defer m.OpenAI.TimeNeeded(t0)
+	m.OpenAI.Processed = true
 	if m.Message == "" || len(m.Message) < 10 {
 		return errors.New("Message is empty or too small. Unable to process.")
 	}
-	if m.Lang.Lang < 1 {
+	if m.Local.Lang.Lang < 1 {
 		return errors.New("Message language is unknown. Unable to process.")
 	}
 	token, ok := getEnv("OPENAI_API_TOKEN")
@@ -91,7 +104,7 @@ func (m *EMail) SetOpenAI() error {
 			req := gpt3.CompletionRequest{
 				Model:       GPT3AIModel,
 				MaxTokens:   300,
-				Prompt:      GPT3AIPromtResponse + lang.Langs[m.Lang.Lang] + _dot + _linefeed + m.Message,
+				Prompt:      GPT3AIPromtResponse + lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed + m.Message,
 				Temperature: 0.6,
 			}
 			resp, err := c.CreateCompletion(ctx, req)
@@ -104,6 +117,31 @@ func (m *EMail) SetOpenAI() error {
 	}
 	return nil
 }
+
+// Report generates a debug report
+func (m *EMail) Report() string {
+	return m.buildReport()
+}
+
+// ProcessLocal()
+func (m *EMail) ProcessLocal() error {
+	t0 := time.Now()
+	defer m.Local.TimeNeeded(t0)
+	m.Local.Processed = true
+	_ = m.SetMessage()
+	_ = m.SetLang()
+	_ = m.SpellFix()
+	_ = m.SetAddr()
+	_ = m.Tokenize()
+	_ = m.CountToken()
+	return nil
+}
+
+// TimeNeeded set time needed to process the Local section
+func (l *Local) TimeNeeded(t0 time.Time) { l.ProcessedTime = time.Since(t0) }
+
+// TimeNeeded set time needed to process OpenAI section
+func (o *OpenAI) TimeNeeded(t0 time.Time) { o.ProcessedTime = time.Since(t0) }
 
 // Tokenize parses (offline) the message body and replaces words via stemmer token
 func (m *EMail) Tokenize() error {
@@ -136,22 +174,22 @@ func (p *Payload) Calc(msg string) error {
 
 // SpellFix parses (offline) the message body and replaces words via stemmer token
 func (m *EMail) SpellFix() error {
-	switch lang.Langs[m.Lang.Lang] {
+	switch lang.Langs[m.Local.Lang.Lang] {
 	case "English":
 		r := spell.New()
-		m.Message, m.SpellFixed = r.Replace(m.Message)
+		m.Message, m.Local.SpellFixed = r.Replace(m.Message)
 	}
 	return nil
 }
 
 // SpellSummary provides a list of spell-fixed words as string from from SpellCheck diff
 func (m *EMail) SpellSummary() string {
-	l := len(m.SpellFixed)
+	l := len(m.Local.SpellFixed)
 	if l < 1 {
 		return "[none]"
 	}
 	result := make([]string, l)
-	for v, diff := range m.SpellFixed {
+	for v, diff := range m.Local.SpellFixed {
 		result[v] = diff.Corrected
 	}
 	return strings.Join(result, ",")
@@ -175,21 +213,21 @@ func (m *EMail) SetAddr() error {
 	line := m.Raw[:idx]
 	emails := addr.FindWithIcannSuffix([]byte(line), false)
 	if len(emails) > 0 {
-		m.AddrRFC, m.AddrMX = true, true
-		m.Addr = *emails[0]
-		if _, err := dnscache.LookupMX(m.Addr.Domain); err != nil {
-			m.AddrMX = false
+		m.Local.AddrRFC, m.Local.AddrMX = true, true
+		m.Local.Addr = *emails[0]
+		if _, err := dnscache.LookupMX(m.Local.Addr.Domain); err != nil {
+			m.Local.AddrMX = false
 		}
 	}
-	if strings.Contains(db, m.Addr.String()) {
-		m.AddrDB = true
+	if strings.Contains(db, m.Local.Addr.String()) {
+		m.Local.AddrDB = true
 	}
 	return nil
 }
 
 // SetLang validates senders message language
 func (m *EMail) SetLang() error {
-	m.Lang = lang.Detect(m.Message)
+	m.Local.Lang = lang.Detect(m.Message)
 	return nil
 }
 
