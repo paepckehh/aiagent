@@ -159,6 +159,7 @@ asking to actually cancel the subscription in the email.
 
 
 
+> cat example-email3.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -220,6 +221,7 @@ Michael
 
 
 
+> cat example-email4.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -283,6 +285,7 @@ Callcenter Agent
 
 
 
+> cat example-email5.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -318,6 +321,7 @@ xeqc0SLfLT1RXCLWv9Se5DWrswvo4Y9bkS24xQYOlpgz1We2KDyH/tiyDwtimoePmaI4A7x2mtazMo
 
 
 
+> cat example-email6.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################
@@ -356,6 +360,7 @@ Angry Customer
 
 
 
+> cat example-email7.txt | aiagent
 ##############################
 # AI MESSAGE ANALYSIS REPORT #
 ##############################

@@ -212,7 +212,7 @@ func (m *EMail) RemoveEMails() error {
 		for _, v := range emails {
 			mailAddr := v.String()
 			m.Local.RemovedEMails = append(m.Local.RemovedEMails, mailAddr)
-			m.Message = strings.Replace(m.Message, mailAddr, "", 0)
+			m.Message = strings.Replace(m.Message, mailAddr, "", -1)
 		}
 	}
 	return nil
