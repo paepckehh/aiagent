@@ -4,10 +4,12 @@ Subject: I`m done!
 
 Hello MyService Corp,
 
-I changed my mind, my life has changed. I dont want any kind of
-subscription based service, not from you or anyone else! 
+I changed my mind, my life has changed. 
 
-Please cancel all services and refund. 
+I dont want any kind of subscription 
+service, not from you or anyone else! 
+
+Please cancel all subscriptions.
 
 Greetings,
 John

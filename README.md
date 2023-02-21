@@ -406,7 +406,7 @@ Pre-process messages offline
 - [X] fix spelling errors
 - [X] detect and isolatlate locally, to save token payload, protect privacy, EU-GDPR compliance
 	- [X] detect additional customer provided email addresses in message body and remove 
-	- [ ] detect any customer provided urls in message body and remove 
+	- [X] detect any customer provided urls in message body and remove 
 	- [ ] detect any format of custom phone number format and remove 
 - [ ] Preprocess via NLP/tokenizer/stemmer to reduce OpenAI token burn rate
 - [ ] Add local/offline-only/trainable AI models (forward only below a certain local confidence level)

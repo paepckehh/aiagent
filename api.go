@@ -11,6 +11,7 @@ import (
 	spell "github.com/golangci/misspell"
 	addr "github.com/mcnijman/go-emailaddress"
 	gpt3 "github.com/sashabaranov/go-gpt3"
+	"mvdan.cc/xurls/v2"
 
 	"paepcke.de/aiagent/gpt3encoder"
 	"paepcke.de/dnscache"
@@ -44,6 +45,13 @@ type OpenAI struct {
 	ProcessedTime time.Duration
 }
 
+// Privacy holds the maybe privacy leaking objects, removed for EU GDPR compliance
+type Privacy struct {
+	EMails []string // Anonymized Email Addresses
+	Phones []string // Anonymized Phone Numbers
+	URLs   []string // Anonymized URLs
+}
+
 // Local hols the Local Processed Date
 type Local struct {
 	Lang                 lang.Info         // message body language and confidence level
@@ -53,18 +61,17 @@ type Local struct {
 	AddrMX               bool              // Addr Domain has valid MX record
 	AddrDB               bool              // Addr match found in mandant DB
 	SpellFixed           []spell.Diff      // SpellFixed words
-	RemovedEMails        []string          // Anonymized eMail Adresses
-	RemovedPhones        []string          // Anonymized Phone Numbers
 	Processed            bool
 	ProcessedTime        time.Duration
 }
 
 // EMail holds the Raw message and all parsable attributes
 type EMail struct {
-	Raw     string // unprocessed raw input text
-	Message string // message
-	Local   Local  // Local processed data
-	OpenAI  OpenAI // OpenAI processed data
+	Raw     string  // unprocessed raw input text
+	Message string  // message
+	Privacy Privacy // holds the anonymized maybe privacy leaking objects
+	Local   Local   // Local processed data
+	OpenAI  OpenAI  // OpenAI processed data
 }
 
 // ProcessOpenAI parses the message body via OpenAI/GPT3
@@ -201,6 +208,7 @@ func (m *EMail) Tokenize() error {
 // Anonymize parses (offline) the message body and replaces private sensitive information
 func (m *EMail) Anonymize() error {
 	_ = m.RemoveEMails()
+	_ = m.RemoveURLs()
 	_ = m.RemovePhones()
 	return nil
 }
@@ -211,10 +219,17 @@ func (m *EMail) RemoveEMails() error {
 	if len(emails) > 0 {
 		for _, v := range emails {
 			mailAddr := v.String()
-			m.Local.RemovedEMails = append(m.Local.RemovedEMails, mailAddr)
+			m.Privacy.EMails = append(m.Privacy.EMails, mailAddr)
 			m.Message = strings.Replace(m.Message, mailAddr, "", -1)
 		}
 	}
+	return nil
+}
+
+// RemoveURLs removes privacy relevant urls from message body
+func (m *EMail) RemoveURLs() error {
+	urls := xurls.Relaxed()
+	m.Privacy.URLs = urls.FindAllString(m.Message, -1)
 	return nil
 }
 

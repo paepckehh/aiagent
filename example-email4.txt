@@ -3,7 +3,8 @@ To:      subscription@service.com
 Subject: I`m done! 
 
 Hello MyService Corp,
-Please cancel all services and refund. 
+I do not want to pay anymore for your
+service. Cancel all subscriptions. Now!
 
 Greetings,
 John
