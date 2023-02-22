@@ -1,10 +1,9 @@
-From:    john.doe@invalid.email
-To:      subscription@service.com
-Subject: I`m done! 
+From:    hu.wen@gmail.com
+To:      contract@service.com
+Subject: request
 
-Hello MyService Corp,
-I do not want to pay anymore for your
-service. Cancel all subscriptions. Now!
+你好，客服，
+我想取消我的订阅服务。
 
-Greetings,
-John
+谢谢，
+问候，

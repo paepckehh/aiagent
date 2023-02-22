@@ -9,10 +9,11 @@ import (
 // buildReport
 func (m *EMail) buildReport() string {
 	var s strings.Builder
-	s.WriteString(_linefeed)
-	s.WriteString("##############################" + _linefeed)
-	s.WriteString("# AI MESSAGE ANALYSIS REPORT #" + _linefeed)
-	s.WriteString("##############################" + _linefeed)
+	s.WriteString("####################################################" + _linefeed)
+	s.WriteString("####################################################" + _linefeed)
+	s.WriteString("#          -= AI MESSAGE ANALYSIS REPORT =-        #" + _linefeed)
+	s.WriteString("####################################################" + _linefeed)
+	s.WriteString("####################################################" + _linefeed)
 	s.WriteString("# INBOUND MESSAGE [debug]    : " + _dlinefeed + m.Raw + _dlinefeed)
 	s.WriteString("# OFFLINE PREFLIGHT ANALYSIS   " + _linefeed)
 	s.WriteString("## Language                  : " + lang.Langs[m.Local.Lang.Lang] + _linefeed)
@@ -43,6 +44,6 @@ func (m *EMail) buildReport() string {
 		s.WriteString("## No OpenAI query performed, inbound data quality failed." + _linefeed)
 		s.WriteString("## Time needed for section   : " + m.Local.ProcessedTime.String() + _linefeed)
 	}
-	s.WriteString(_linefeed + _linefeed)
+	s.WriteString(_dlinefeed)
 	return s.String()
 }

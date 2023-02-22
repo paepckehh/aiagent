@@ -1,0 +1,10 @@
+From:    john.doe@invalidemail
+To:      subscription@service.com
+Subject: I`m done! 
+
+Hello MyService Corp,
+I do not want to pay anymore for your
+service. Cancel all subscriptions. Now!
+
+Greetings,
+John

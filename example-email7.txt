@@ -1,13 +1,9 @@
 From:    marie@gmail.com
 To:      contract@service.com
-Subject: Hala!
+Subject: Hola!
 
-Hola Servicio al Cliente de MyCorp,
-Lamento informarles que necesito dar por terminado mi
-suscripción hoy. Estoy agradecida por el excelente
-servicio que me han brindado durante los años. 
-
-Por favor, cancelen el servicio lo antes posible.
+Por favor, cancele el servicio de suscripción
+lo antes posible.
 
 Atentamente,
 Marie

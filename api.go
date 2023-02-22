@@ -21,8 +21,9 @@ import (
 const (
 	GPT3AIModel         string  = gpt3.GPT3TextDavinci003
 	GPT3AICosts         float64 = 0.0200 / 1000
-	GPT3AIPromtCancel   string  = "Does the following email try to cancel a subscription service?"
-	GPT3AIPromtResponse string  = "I'm Callcenter Agent Michael. The following customer email tries to canel a subscription service and maybe contains some reasons why. Please answer this email. Tell this customer that you accept the canel request, but you are sad to see him leave. Ask the customer if there is anything you can do, to keep this subscription. If the customer provides reasons for the cancel request, try to argue politly. Write this answer email in language "
+	GPT3AIPromtLang     string  = "Write the answer email in polite standard "
+	GPT3AIPromtCancel   string  = "Does this email written attempt to cancel a subscription service?\n"
+	GPT3AIPromtResponse string  = "The following text is a customer email trying to cancel a subscription service. Please answer this customer email by telling that you accept the cancel request to the next possible time, but you are sad to see them leave. Ask the customer in a polite way if there is anything you can do to keep this subscription. "
 )
 
 // Payload holds the metrics for AI payload
@@ -79,6 +80,7 @@ func (m *EMail) ProcessOpenAI() error {
 	t0 := time.Now()
 	defer m.OpenAI.TimeNeeded(t0)
 	m.OpenAI.Processed = true
+	localLang := lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed
 	if m.Message == "" || len(m.Message) < 10 {
 		return errors.New("Message is empty or too small. Unable to process.")
 	}
@@ -95,7 +97,7 @@ func (m *EMail) ProcessOpenAI() error {
 	req := gpt3.CompletionRequest{
 		Model:       GPT3AIModel,
 		MaxTokens:   64,
-		Prompt:      GPT3AIPromtCancel + _linefeed + m.Message,
+		Prompt:      GPT3AIPromtCancel + m.Message,
 		Temperature: 0,
 	}
 	resp, err := c.CreateCompletion(ctx, req)
@@ -112,8 +114,8 @@ func (m *EMail) ProcessOpenAI() error {
 			ctx := context.Background()
 			req := gpt3.CompletionRequest{
 				Model:       GPT3AIModel,
-				MaxTokens:   250,
-				Prompt:      GPT3AIPromtResponse + lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed + m.Message,
+				MaxTokens:   350,
+				Prompt:      GPT3AIPromtResponse + GPT3AIPromtLang + localLang + m.Message,
 				Temperature: 0.2,
 			}
 			resp, err := c.CreateCompletion(ctx, req)
@@ -230,6 +232,11 @@ func (m *EMail) RemoveEMails() error {
 func (m *EMail) RemoveURLs() error {
 	urls := xurls.Relaxed()
 	m.Privacy.URLs = urls.FindAllString(m.Message, -1)
+	if len(m.Privacy.URLs) > 0 {
+		for _, v := range m.Privacy.URLs {
+			m.Message = strings.Replace(m.Message, v, "", -1)
+		}
+	}
 	return nil
 }
 
