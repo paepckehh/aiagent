@@ -1,6 +1,6 @@
 module paepcke.de/aiagent
 
-go 1.21
+go 1.20
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
@@ -8,7 +8,7 @@ require (
 	github.com/golangci/misspell v0.4.0
 	github.com/mcnijman/go-emailaddress v1.1.0
 	github.com/samber/lo v1.37.0
-	github.com/sashabaranov/go-gpt3 v1.2.0
+	github.com/sashabaranov/go-gpt3 v1.2.1
 	mvdan.cc/xurls/v2 v2.4.0
 	paepcke.de/dnscache v0.1.8
 )
