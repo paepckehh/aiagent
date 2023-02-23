@@ -3,6 +3,8 @@
 
 [paepche.de/aiagent](https://paepcke.de/aiagent) 
 
+[![ai_generated_ai_callcenter_agent](https://github.com/paepckehh/paepckehh/raw/main/logos/aiagent.png)]
+
 Manages your subscription service in-mailbox (e.g. cancel-requests) via AI (OpenAI ChatGPT Engine).
 
 # FEATURES
