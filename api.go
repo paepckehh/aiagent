@@ -17,13 +17,13 @@ import (
 	"paepcke.de/dnscache"
 )
 
-// GPT3 AI Model defaults
+// GPT3 AI Model fragments
 const (
 	GPT3AIModel         string  = gpt3.GPT3TextDavinci003
 	GPT3AICosts         float64 = 0.0200 / 1000
 	GPT3AIPromtLang     string  = "Write the answer email in polite standard "
-	GPT3AIPromtCancel   string  = "Does this email written attempt to cancel a subscription service?\n"
-	GPT3AIPromtResponse string  = "The following text is a customer email trying to cancel a subscription service. Please answer this customer email by telling that you accept the cancel request to the next possible time, but you are sad to see them leave. Ask the customer in a polite way if there is anything you can do to keep this subscription. "
+	GPT3AIPromtCancel   string  = "Does this email attempt to cancel a subscription service?\n"
+	GPT3AIPromtResponse string  = "The following is a customer email trying to cancel a subscription service. Please answer this customer email by telling that you accept the cancel request to the next possible time, but you are sad to see them leave. Ask the customer in a polite way if there is anything you can do to keep this subscription. "
 )
 
 // Payload holds the metrics for AI payload

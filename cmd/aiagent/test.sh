@@ -1,5 +1,5 @@
 #!/bin/sh
-doit() { 
+doit() {
 	echo "cat ../../$FILE | ./aiagent"
 	cat ../../$FILE | ./aiagent
 }
@@ -12,9 +12,9 @@ go build -v -mod=readonly
 FILE="example-email1.txt" && doit
 FILE="example-email2.txt" && doit
 FILE="example-email3.txt" && doit
-# FILE="example-email4.txt" && doit 
-# FILE="example-email5.txt" && doit 
-FILE="example-email6.txt" && doit 
+# FILE="example-email4.txt" && doit
+# FILE="example-email5.txt" && doit
+FILE="example-email6.txt" && doit
 FILE="example-email7.txt" && doit
 FILE="example-email8.txt" && doit
 rm ./aiagent > /dev/null 2>&1
