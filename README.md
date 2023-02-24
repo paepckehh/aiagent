@@ -6,7 +6,7 @@
 
 [paepcke.de/aiagent](https://paepcke.de/aiagent) 
 
-Manages your subscription service in-mailbox (e.g. cancel-requests) via AI (OpenAI ChatGPT Engine).
+Manage your subscription service mailbox (e.g. cancel-requests) via AI (OpenAI ChatGPT Engine).
 
 # FEATURES
 
