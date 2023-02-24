@@ -2,7 +2,7 @@
 [![Go Reference](https://pkg.go.dev/badge/paepcke.de/aiagent.svg)](https://pkg.go.dev/paepcke.de/aiagent) [![Go Report Card](https://goreportcard.com/badge/paepcke.de/aiagent)](https://goreportcard.com/report/paepcke.de/aiagent) [![Go Build](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml/badge.svg)](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml)
 
 
-![ai_generated_ai_callcenter_agent](https://github.com/paepckehh/paepckehh/raw/main/logos/aiagent.png)
+![ai_generated_ai_callcenter_agent](https://github.com/paepckehh/paepckehh/raw/main/artwork/aiagent.png)
 
 [paepcke.de/aiagent](https://paepcke.de/aiagent) 
 
