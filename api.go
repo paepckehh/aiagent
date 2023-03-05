@@ -10,7 +10,7 @@ import (
 	lang "github.com/abadojack/whatlanggo"
 	spell "github.com/golangci/misspell"
 	addr "github.com/mcnijman/go-emailaddress"
-	gpt3 "github.com/sashabaranov/go-gpt3"
+	gpt3 "github.com/sashabaranov/go-openai"
 	"mvdan.cc/xurls/v2"
 
 	"paepcke.de/aiagent/gpt3encoder"
