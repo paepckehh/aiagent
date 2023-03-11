@@ -31,5 +31,5 @@ gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127/go.mod h1:Co6ibVJAznAaIkqp8
 gopkg.in/errgo.v2 v2.1.0/go.mod h1:hNsd1EY+bozCKY1Ytp96fpM3vjJbqLJn88ws8XvfDNI=
 mvdan.cc/xurls/v2 v2.4.0 h1:tzxjVAj+wSBmDcF6zBB7/myTy3gX9xvi8Tyr28AuQgc=
 mvdan.cc/xurls/v2 v2.4.0/go.mod h1:+GEjq9uNjqs8LQfM9nVnM8rff0OQ5Iash5rzX+N1CSg=
-paepcke.de/dnscache v0.1.10 h1:u2NgHx5/sJ/yFlh4VWJRnABSfAfjY5M8p1er2IWn3PQ=
-paepcke.de/dnscache v0.1.10/go.mod h1:kr7Bez1/VBgvSFPACXetJoO/OL/Rcn4xI2XVcgynBa4=
+paepcke.de/dnscache v0.1.11 h1:tNM0Ovn0FNj4a20v8ToiPX24NRHt95R67lhub+9AsUU=
+paepcke.de/dnscache v0.1.11/go.mod h1:kr7Bez1/VBgvSFPACXetJoO/OL/Rcn4xI2XVcgynBa4=
