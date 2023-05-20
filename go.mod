@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
-	github.com/dlclark/regexp2 v1.9.0
+	github.com/dlclark/regexp2 v1.10.0
 	github.com/golangci/misspell v0.4.0
 	github.com/mcnijman/go-emailaddress v1.1.0
 	github.com/samber/lo v1.38.1
