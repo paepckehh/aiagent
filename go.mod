@@ -10,7 +10,7 @@ require (
 	github.com/samber/lo v1.38.1
 	github.com/sashabaranov/go-openai v1.9.4
 	mvdan.cc/xurls/v2 v2.5.0
-	paepcke.de/dnscache v0.1.14
+	paepcke.de/dnscache v0.1.17
 )
 
 require (
