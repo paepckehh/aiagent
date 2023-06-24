@@ -10,13 +10,13 @@ require (
 	github.com/samber/lo v1.38.1
 	github.com/sashabaranov/go-openai v1.11.3
 	mvdan.cc/xurls/v2 v2.5.0
-	paepcke.de/dnscache v0.1.18
+	paepcke.de/dnscache v0.1.19
 )
 
 require (
 	golang.org/x/crypto v0.10.0 // indirect
 	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
-	golang.org/x/net v0.10.0 // indirect
+	golang.org/x/net v0.11.0 // indirect
 	golang.org/x/sys v0.9.0 // indirect
 	golang.org/x/text v0.10.0 // indirect
 )
