@@ -2,6 +2,8 @@ module paepcke.de/aiagent
 
 go 1.21
 
+toolchain go1.22.3
+
 require (
 	github.com/abadojack/whatlanggo v1.0.1
 	github.com/dlclark/regexp2 v1.11.0
