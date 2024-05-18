@@ -19,7 +19,7 @@ import (
 
 // GPT3 AI Model fragments
 const (
-	GPT3AIModel         string  = gpt3.GPT3TextDavinci003
+	GPT3AIModel         string  = "gpt-3.5-turbo-instruct"
 	GPT3AICosts         float64 = 0.0200 / 1000
 	GPT3AIPromtLang     string  = "Write the answer email in polite standard "
 	GPT3AIPromtCancel   string  = "Does this email attempt to cancel a subscription service?\n"
