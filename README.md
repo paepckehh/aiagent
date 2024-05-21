@@ -16,8 +16,6 @@ via AI (OpenAI / ChatGPT / GPT3 / GPT3.5 / GPT4 Engine).
 * Protect your local infrastructure (DBs) from DoS (spam/targeted-attacks/noise)
 	* Filter locally for valid correspondence email addresses (e.g. RFC conformance and validity)
 	* Filter locally for supported languages (e.g. do not process emails in Hindi for a German local newspaper subscription)
-* EU-GDPR compliant (WIP, see todo)
-
 
 # INSTALL
 
