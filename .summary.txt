@@ -1,0 +1,25 @@
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Language                              Files     Lines   Blanks  Comments     Code Complexity Complexity/Lines
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Plain Text                                8       103       25         0       78          0             0.00
+Go                                        6      1001       59        43      899         58            47.07
+YAML                                      5       132        0         0      132          0             0.00
+Markdown                                  5       534      147         0      387          0             0.00
+gitignore                                 2        27        0         0       27          0             0.00
+Shell                                     1        20        0         4       16          6            37.50
+JSON                                      1         1        0         0        1          0             0.00
+License                                   1        21        4         0       17          0             0.00
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Total                                    29      1839      235        47     1557         64            84.57
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Total Physical Source Lines of Code (SLOC)                     = 1,557
+Development Effort Estimate, Person-Years (Person-Months)      = 0.32 (3.82)
+ (Basic COCOMO model, Person-Months = 2.40*(KSLOC**1.05)*1.00)
+Schedule Estimate, Years (Months)                              = 0.35 (4.16)
+ (Basic COCOMO model, Months = 2.50*(person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)       = 0.92
+Total Estimated Cost to Develop                                = $43,003
+ (average salary = $56,286/year, overhead = 2.40)
+Processed 1089602 bytes, 1.090 megabytes (SI)
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
