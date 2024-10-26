@@ -1,5 +1,7 @@
 # OVERVIEW
-[![Go Reference](https://pkg.go.dev/badge/paepcke.de/aiagent.svg)](https://pkg.go.dev/paepcke.de/aiagent) [![Go Report Card](https://goreportcard.com/badge/paepcke.de/aiagent)](https://goreportcard.com/report/paepcke.de/aiagent) [![Go Build](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml/badge.svg)](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml)
+[![Go Reference](https://pkg.go.dev/badge/paepcke.de/aiagent.svg)](https://pkg.go.dev/paepcke.de/aiagent)
+[![Go Report Card](https://goreportcard.com/badge/paepcke.de/aiagent)](https://goreportcard.com/report/paepcke.de/aiagent)
+[![Go Build](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml/badge.svg)](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml)
 
 
 ![ai_generated_ai_callcenter_agent](https://github.com/paepckehh/paepckehh/raw/main/artwork/aiagent.png)
@@ -41,8 +43,8 @@ go install paepcke.de/aiagent/cmd/aiagent@latest
 
 ```
 export OPENAI_API_TOKEN="<your_openai_api_key>"
+cat example-email1.txt | go run paepcke.de/aiagent/cmd/aiagent@latest
 
-cat ../../example-email1.txt | ./aiagent
 ####################################################
 ####################################################
 #          -= AI MESSAGE ANALYSIS REPORT =-        #
@@ -111,7 +113,8 @@ MyService Corp
 ## Time needed for section   : 13.079184167s
 
 
-cat ../../example-email2.txt | ./aiagent
+export OPENAI_API_TOKEN="<your_openai_api_key>"
+cat example-email2.txt | go run cmd/aiagent/cmd/main.go
 ####################################################
 ####################################################
 #          -= AI MESSAGE ANALYSIS REPORT =-        #
