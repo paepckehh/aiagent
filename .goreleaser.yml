@@ -8,18 +8,17 @@ builds:
     goos:
       - linux
       - freebsd
+      - darwin
+      - windows
     goarch:
       - amd64
-      - arm
       - arm64
-    goarm:
-      - 7
 archives:
   -
     id: aiagent-binaries
-    name_template: "aiagent-{{ .Os }}_{{ .Arch }}_{{ .Version }}"
+    name_template: "aiaigent-{{ .Os }}_{{ .Arch }}_{{ .Version }}"
     files:
-      - LICENSE.md
+      - LICENSE
       - README.md
 checksum:
   name_template: 'checksums.txt'
