@@ -82,10 +82,10 @@ func (m *EMail) ProcessOpenAI() error {
 	m.OpenAI.Processed = true
 	localLang := lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed
 	if m.Message == "" || len(m.Message) < 10 {
-		return errors.New("Message is empty or too small. Unable to process.")
+		return errors.New("message is empty or too small. Unable to process")
 	}
 	if m.Local.Lang.Lang < 1 {
-		return errors.New("Message language is unknown. Unable to process.")
+		return errors.New("message language is unknown. Unable to process")
 	}
 	token, ok := getEnv("OPENAI_API_TOKEN")
 	if !ok {
@@ -254,7 +254,7 @@ func (m *EMail) SetAddr() error {
 	}
 	for {
 		if idx > l {
-			return errors.New("No Sender Address: Input Message to Short")
+			return errors.New("no Sender Address: Input Message to Short")
 		}
 		if m.Raw[idx] == _linefeedR {
 			break
@@ -287,7 +287,7 @@ func (m *EMail) SetMessage() error {
 	l, idx, header := len(m.Raw), 0, 0
 	for header < _msgHeader {
 		if idx > l {
-			return errors.New("Input Message to Short")
+			return errors.New("input Message to Short")
 		}
 		if m.Raw[idx] == _linefeedR {
 			header++
