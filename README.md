@@ -1,23 +1,28 @@
 # OVERVIEW
+
 [![Go Reference](https://pkg.go.dev/badge/paepcke.de/aiagent.svg)](https://pkg.go.dev/paepcke.de/aiagent)
 [![Go Report Card](https://goreportcard.com/badge/paepcke.de/aiagent)](https://goreportcard.com/report/paepcke.de/aiagent)
 [![Go Build](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml/badge.svg)](https://github.com/paepckehh/aiagent/actions/workflows/golang.yml)
 
-
 ![ai_generated_ai_callcenter_agent](https://github.com/paepckehh/paepckehh/raw/main/artwork/aiagent.png)
 
-[paepcke.de/aiagent](https://paepcke.de/aiagent) 
+[paepcke.de/aiagent](https://paepcke.de/aiagent)
 
-Manage your subscription service mailbox (e.g. cancel-requests) 
-via AI (OpenAI / ChatGPT / GPT3 / GPT3.5 / GPT4 Engine).
+Manage your subscription service mailbox (e.g. cancel-requests) via AI (OpenAI /
+ChatGPT / GPT3 / GPT3.5 / GPT4 Engine).
 
 # FEATURES
 
-* Process requests in [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages) languages (offline & online)
-* Protect your OpenAI-API Key Budget [$US] with extensive local-first pre-processing and filtering 
-* Protect your local infrastructure (DBs) from DoS (spam/targeted-attacks/noise)
-	* Filter locally for valid correspondence email addresses (e.g. RFC conformance and validity)
-	* Filter locally for supported languages (e.g. do not process emails in Hindi for a German local newspaper subscription)
+- Process requests in
+  [84](https://github.com/abadojack/whatlanggo/blob/master/SUPPORTED_LANGUAGES.md#supported-languages)
+  languages (offline & online)
+- Protect your OpenAI-API Key Budget [$US] with extensive local-first
+  pre-processing and filtering
+- Protect your local infrastructure (DBs) from DoS (spam/targeted-attacks/noise)
+  - Filter locally for valid correspondence email addresses (e.g. RFC
+    conformance and validity)
+  - Filter locally for supported languages (e.g. do not process emails in Hindi
+    for a German local newspaper subscription)
 
 # INSTALL
 
@@ -35,11 +40,11 @@ go install paepcke.de/aiagent/cmd/aiagent@latest
 
 # Requirements
 
-* Get your free OpenAI api token here: [OpenAI API key](https://openai.com/api)
+- Get your free OpenAI api token here: [OpenAI API key](https://openai.com/api)
 
 # SHOWTIME
 
-* Input eMails: See example messages in root folder!
+- Input eMails: See example messages in root folder!
 
 ```
 export OPENAI_API_TOKEN="<your_openai_api_key>"
@@ -383,31 +388,46 @@ John
 ## Raw / Filtered GPT3 Price : 0.00124 US$  / 0.00074 US$ 
 ## No OpenAI query performed, inbound data quality failed.
 ## Time needed for section   : 4.339552864s
-
 ```
+
+# [W]ork-[I]n-[P]rogress
+
+- [] Process Messages offline via Ollama Instance instead of OpenAI (safe
+  budget, reach german/eu DSGVO conformance)
+  - [x] see: ollama-dev branch
 
 # TODO
 
-Pre-process messages offline 
-- [X] analyzing sender email address validity
-- [X] analyzing and match message content and language
-- [X] fix spelling errors
-- [X] detect and isolatlate locally, to save token payload, protect privacy, EU-GDPR compliance
-	- [X] detect and remove unwanted additional customer provided email addresses in message body
-	- [X] detect and remove unwanted customer provided urls in message body 
-	- [ ] detect and remove unwanted customers phone numbers
-- [ ] Preprocess via NLP/tokenizer/stemmer to reduce OpenAI token burn rate
-- [ ] Add local/offline-only/trainable AI models (forward only below a certain local confidence level)
+Pre-process messages offline
 
-Interfaces 
+- [x] analyzing sender email address validity
+- [x] analyzing and match message content and language
+- [x] fix spelling errors
+- [x] detect and isolatlate locally, to save token payload, protect privacy,
+      EU-GDPR compliance
+  - [x] detect and remove unwanted additional customer provided email addresses
+        in message body
+  - [x] detect and remove unwanted customer provided urls in message body
+  - [ ] detect and remove unwanted customers phone numbers
+- [ ] Preprocess via NLP/tokenizer/stemmer to reduce OpenAI token burn rate
+- [ ] Add local/offline-only/trainable AI models (forward only below a certain
+      local confidence level)
+
+Interfaces
+
 - [ ] Add native IMAP/SMTP interfaces to allow total independent email exchange
 - [ ] Add individual, language-dependent answer email templates/responses
-- [ ] Add new online AI APIs as they appear, to save costs and remove service dependency (e.g. Google AI)
+- [ ] Add new online AI APIs as they appear, to save costs and remove service
+      dependency (e.g. Google AI)
 
 Long-term goals (needs commercial project sponsoring):
-- [ ] Allow ChatGPT to process customer data change requests (e.g. address, credit card, etc.)
-- [ ] Allow ChatGPT to respond, discuss, and clarify corner cases directly with customers via email exchange
-- [ ] Add SIP/Voice Interactive Gateway for doing the same via interactive communication
+
+- [ ] Allow ChatGPT to process customer data change requests (e.g. address,
+      credit card, etc.)
+- [ ] Allow ChatGPT to respond, discuss, and clarify corner cases directly with
+      customers via email exchange
+- [ ] Add SIP/Voice Interactive Gateway for doing the same via interactive
+      communication
 
 # DOCS
 
@@ -420,11 +440,3 @@ Generated by OpenAI.
 # CONTRIBUTION
 
 Yes, please! PRs welcome!
-
-
-
-
-
-
-
-

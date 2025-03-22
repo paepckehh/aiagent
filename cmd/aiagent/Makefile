@@ -1,5 +1,5 @@
 all:
-	go run main.go 
+	cat ../../example* | go run main.go 
 
 check: 
 	gofmt -w -s .
