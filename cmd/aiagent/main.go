@@ -25,7 +25,8 @@ func main() {
 	m.Local.TargetLangConfidence = 0.84
 	_ = m.ProcessLocal()
 	if m.Local.AddrRFC && m.Local.AddrMX && m.Local.Lang.Confidence > m.Local.TargetLangConfidence {
-		_ = m.ProcessOpenAI()
+		//		_ = m.ProcessOpenAI()
+		_ = m.ProcessOllama()
 	}
 	out(m.Report())
 }

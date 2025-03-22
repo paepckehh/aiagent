@@ -4,12 +4,14 @@ package aiagent
 import (
 	"context"
 	"errors"
+	"fmt"
 	"strings"
 	"time"
 
 	lang "github.com/abadojack/whatlanggo"
 	spell "github.com/golangci/misspell"
 	addr "github.com/mcnijman/go-emailaddress"
+	"github.com/ollama/ollama/api"
 	gpt3 "github.com/sashabaranov/go-openai"
 	"mvdan.cc/xurls/v2"
 
@@ -34,8 +36,8 @@ type Payload struct {
 	Cost  float64 // cost in $US for one token
 }
 
-// OpenAI holds the OpenAI.org interface
-type OpenAI struct {
+// AiModel holds the AiModel.org interface
+type AiModel struct {
 	State         bool
 	IsCancel      bool
 	Answer        string
@@ -53,7 +55,7 @@ type Privacy struct {
 	URLs   []string // Anonymized URLs
 }
 
-// Local hols the Local Processed Date
+// Local holds the Local Processed Date
 type Local struct {
 	Lang                 lang.Info         // message body language and confidence level
 	TargetLangConfidence float64           // language target confidence needed
@@ -72,14 +74,56 @@ type EMail struct {
 	Message string  // message
 	Privacy Privacy // holds the anonymized maybe privacy leaking objects
 	Local   Local   // Local processed data
-	OpenAI  OpenAI  // OpenAI processed data
+	AiModel AiModel // AiModel processed data
 }
 
-// ProcessOpenAI parses the message body via OpenAI/GPT3
+// ProcessOllama parses the message body via local Ollama Instance
+func (m *EMail) ProcessOllama() error {
+	t0 := time.Now()
+	defer m.AiModel.TimeNeeded(t0)
+	m.AiModel.Processed = true
+	// localLang := lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed
+	if m.Message == "" || len(m.Message) < 10 {
+		return errors.New("message is empty or too small. Unable to process")
+	}
+	if m.Local.Lang.Lang < 1 {
+		return errors.New("message language is unknown. Unable to process")
+	}
+	client, err := api.ClientFromEnvironment()
+	if err != nil {
+		m.AiModel.Answer = bracket("ollama api ollama api endpoint unreachable: " + err.Error())
+		return errors.New(m.AiModel.Answer)
+	}
+	req := &api.GenerateRequest{
+		Model:  "mistal",
+		Prompt: "how many planets are there?",
+		Stream: new(bool),
+	}
+	respFunc := func(response api.GenerateResponse) error {
+		fmt.Println(response.Response)
+		return nil
+	}
+	err = client.Generate(context.Background(), req, respFunc)
+	if err != nil {
+		m.AiModel.Answer = bracket("ollama api ollama api endpoint error: " + err.Error())
+		return errors.New(m.AiModel.Answer)
+	}
+	m.AiModel.State = true
+	//	m.AiModel.Answer = resp.Choices[0].Text[1:]
+	//	if len(m.AiModel.Answer) > 2 {
+	//		if m.AiModel.Answer[:3] == "Yes" {
+	//			m.AiModel.IsCancel = true
+	//			m.AiModel.Response = "why?"
+	//                      generate response text here
+	//                      m.AiModel.Response = resp.Choices[0].Text[1:]
+	return nil
+}
+
+// ProcessOpenAI parses the message body via AiModel/GPT3
 func (m *EMail) ProcessOpenAI() error {
 	t0 := time.Now()
-	defer m.OpenAI.TimeNeeded(t0)
-	m.OpenAI.Processed = true
+	defer m.AiModel.TimeNeeded(t0)
+	m.AiModel.Processed = true
 	localLang := lang.Langs[m.Local.Lang.Lang] + _dot + _linefeed
 	if m.Message == "" || len(m.Message) < 10 {
 		return errors.New("message is empty or too small. Unable to process")
@@ -89,8 +133,8 @@ func (m *EMail) ProcessOpenAI() error {
 	}
 	token, ok := getEnv("OPENAI_API_TOKEN")
 	if !ok {
-		m.OpenAI.Answer = bracket("unable to read API token from env")
-		return errors.New(m.OpenAI.Answer)
+		m.AiModel.Answer = bracket("unable to read API token from env")
+		return errors.New(m.AiModel.Answer)
 	}
 	c := gpt3.NewClient(token)
 	ctx := context.Background()
@@ -102,14 +146,14 @@ func (m *EMail) ProcessOpenAI() error {
 	}
 	resp, err := c.CreateCompletion(ctx, req)
 	if err != nil {
-		m.OpenAI.Answer = bracket(err.Error())
+		m.AiModel.Answer = bracket(err.Error())
 		return err
 	}
-	m.OpenAI.State = true
-	m.OpenAI.Answer = resp.Choices[0].Text[1:]
-	if len(m.OpenAI.Answer) > 2 {
-		if m.OpenAI.Answer[:3] == "Yes" {
-			m.OpenAI.IsCancel = true
+	m.AiModel.State = true
+	m.AiModel.Answer = resp.Choices[0].Text[1:]
+	if len(m.AiModel.Answer) > 2 {
+		if m.AiModel.Answer[:3] == "Yes" {
+			m.AiModel.IsCancel = true
 			c := gpt3.NewClient(token)
 			ctx := context.Background()
 			req := gpt3.CompletionRequest{
@@ -120,10 +164,10 @@ func (m *EMail) ProcessOpenAI() error {
 			}
 			resp, err := c.CreateCompletion(ctx, req)
 			if err != nil {
-				m.OpenAI.Response = bracket(err.Error())
+				m.AiModel.Response = bracket(err.Error())
 				return err
 			}
-			m.OpenAI.Response = resp.Choices[0].Text[1:]
+			m.AiModel.Response = resp.Choices[0].Text[1:]
 		}
 	}
 	return nil
@@ -152,13 +196,13 @@ func (m *EMail) ProcessLocal() error {
 // TimeNeeded set time needed to process the Local section
 func (l *Local) TimeNeeded(t0 time.Time) { l.ProcessedTime = time.Since(t0) }
 
-// TimeNeeded set time needed to process OpenAI section
-func (o *OpenAI) TimeNeeded(t0 time.Time) { o.ProcessedTime = time.Since(t0) }
+// TimeNeeded set time needed to process AiModel section
+func (o *AiModel) TimeNeeded(t0 time.Time) { o.ProcessedTime = time.Since(t0) }
 
 // CountToken counts the real GT3 compatible Token for Raw and Message, calculate the costs in US$
 func (m *EMail) CountToken() error {
-	_ = m.OpenAI.Raw.Calc(m.Raw)
-	_ = m.OpenAI.Msg.Calc(m.Message)
+	_ = m.AiModel.Raw.Calc(m.Raw)
+	_ = m.AiModel.Msg.Calc(m.Message)
 	return nil
 }
 
