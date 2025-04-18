@@ -1,6 +1,6 @@
 module paepcke.de/aiagent
 
-go 1.23.6
+go 1.24.1
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
@@ -14,6 +14,6 @@ require (
 )
 
 require (
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/net v0.0.0-20180911220305-26e67e76b6c3 // indirect
+	golang.org/x/text v0.21.0 // indirect
 )
