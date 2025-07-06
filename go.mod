@@ -1,6 +1,6 @@
 module paepcke.de/aiagent
 
-go 1.24.1
+go 1.24.4
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
