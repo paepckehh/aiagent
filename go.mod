@@ -8,7 +8,7 @@ require (
 	github.com/golangci/misspell v0.7.0
 	github.com/mcnijman/go-emailaddress v1.1.1
 	github.com/samber/lo v1.51.0
-	github.com/sashabaranov/go-openai v1.40.4
+	github.com/sashabaranov/go-openai v1.40.5
 	mvdan.cc/xurls/v2 v2.6.0
 	paepcke.de/dnscache v0.1.24
 )
