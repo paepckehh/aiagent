@@ -16,5 +16,5 @@ golang.org/x/text v0.22.0 h1:bofq7m3/HAFvbF51jz3Q9wLg3jkvSPuiZu/pD1XwgtM=
 golang.org/x/text v0.22.0/go.mod h1:YRoo4H8PVmsu+E3Ou7cqLVH8oXWIHVoX0jqUWALQhfY=
 mvdan.cc/xurls/v2 v2.6.0 h1:3NTZpeTxYVWNSokW3MKeyVkz/j7uYXYiMtXRUfmjbgI=
 mvdan.cc/xurls/v2 v2.6.0/go.mod h1:bCvEZ1XvdA6wDnxY7jPPjEmigDtvtvPXAD/Exa9IMSk=
-paepcke.de/dnscache v0.1.25 h1:5yWzkQmxZ/5Uwh40+4MihmJvrWQOdYMAxvH2p0tHzmk=
-paepcke.de/dnscache v0.1.25/go.mod h1:gWCFngETxg+bgp3FnCXvABqthp4DI99cijDwj6GaPHc=
+paepcke.de/dnscache v0.1.28 h1:npLB0qGWcD3+ewVoAbJR9b3lXMXT5E1iufF4cOtdTtk=
+paepcke.de/dnscache v0.1.28/go.mod h1:UaWnIJnHlbSHbDdcMdn2arSifyiTI/QQtwRecBWshxQ=
