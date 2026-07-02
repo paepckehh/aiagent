@@ -14,6 +14,6 @@ require (
 )
 
 require (
-	golang.org/x/net v0.0.0-20180911220305-26e67e76b6c3 // indirect
-	golang.org/x/text v0.22.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 )
