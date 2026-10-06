@@ -1,6 +1,6 @@
 module paepcke.de/aiagent
 
-go 1.25.5
+go 1.27.1
 
 require (
 	github.com/abadojack/whatlanggo v1.0.1
@@ -10,7 +10,7 @@ require (
 	github.com/samber/lo v1.53.0
 	github.com/sashabaranov/go-openai v1.43.0
 	mvdan.cc/xurls/v2 v2.6.0
-	paepcke.de/dnscache v0.1.28
+	paepcke.de/dnscache v0.1.29
 )
 
 require (
